@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <div class="mainDiv">
+        <div class="mainTopDiv"></div>
+        <div class="Line">  
+            <p class="TherminalText">Type /help for the list of commands</p>
+        </div>
+        <div class="Line">            
+            <p class="TherminalText">- something to test :</p><input type="text" autofocus class="InputText">
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+        background-color: #171717;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .mainDiv{
+        background-color: black;
+        width: 50%;
+        height: 50vh;
+        position: relative;
+        border-radius: 10px;
+        padding: 40px;
+    }
+
+    .mainTopDiv{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(25, 25, 25);
+        height: 45px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .TherminalText{
+        color: rgb(16, 236, 16);
+        margin: 0px;
+        padding-top: 1px;
+    }
+
+    .Line{
+        display: flex;
+        margin-top: 30px;
+    }
+
+    .InputText{
+        background-color: transparent;
+        color: rgb(16, 236, 16);
+        border: none;
+        outline: none;
+        height: 20px;
+        margin-left: 5px;
+    }
+</style>
