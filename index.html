@@ -214,12 +214,14 @@ async function getInputValue(){
 function trueValue(value){
     const div = document.createElement("section");
     // div.setAttribute("class", "type2")
-    const i = document.createElement("i");
-    i.setAttribute("class", "fas fa-angle-right icone")
-    const mensagem = document.createElement("h2");
+    // const i = document.createElement("i");
+    // i.setAttribute("class", "fas fa-angle-right icone")
+    const mensagem = document.createElement("p");
     mensagem.setAttribute("class", "sucess")
-    mensagem.textContent = `${value}`;
-    div.appendChild(i);
+    //mensagem.textContent = `${value}`;
+    const m = "guest@s'folio.com:~ ";
+    mensagem.textContent = m.concat(`${value}`);
+    //div.appendChild(i);
     div.appendChild(mensagem);
     app.appendChild(div);
 }
@@ -229,7 +231,7 @@ function falseValue(value){
     //div.setAttribute("class", "type2")
     const i = document.createElement("i");
     i.setAttribute("class", "fas fa-angle-right icone")
-    const mensagem = document.createElement("h2");
+    const mensagem = document.createElement("p");
     mensagem.setAttribute("class", "error")
     mensagem.textContent = `${value}`;
     div.appendChild(i);
