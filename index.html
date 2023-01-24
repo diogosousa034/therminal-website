@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>S'Folio</title>
 </head>
 <body>
     <div class="mainDiv">
-        <div class="mainTopDiv"></div>
+        <div class="mainTopDiv">
+            <div class="HeaderSimbols">
+                <div class="HeaderRed"></div>
+                <div class="HeaderYellow"></div>
+                <div class="HeaderGreen"></div>
+            </div>
+            <p class="HeadText">S'Folio</p>
+        </div>
         <div class="Line">  
             <p class="TherminalText">Type /help for the list of commands</p>
         </div>
         <div class="Line">            
-            <p class="TherminalText">- something to test :</p><input type="text" autofocus class="InputText">
+            <p class="TherminalText">> something to test : ~</p><input type="text" autofocus class="InputText">
         </div>
     </div>
 </body>
@@ -51,6 +58,41 @@
         border-top-right-radius: 10px;
     }
 
+    .HeadText{
+        text-align: center;
+        color: rgb(16, 236, 16);
+    }
+
+    .HeaderSimbols{
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        display: flex;
+    }
+
+    .HeaderRed{
+        background-color: red;
+        width: 15px;
+        height: 15px;
+        border-radius: 25px;
+    }
+
+    .HeaderYellow{
+        background-color: yellow;
+        width: 15px;
+        height: 15px;
+        border-radius: 25px;
+        margin-left: 10px;
+    }
+
+    .HeaderGreen{
+        background-color: green;
+        width: 15px;
+        height: 15px;
+        border-radius: 25px;
+        margin-left: 10px;
+    }
+
     .TherminalText{
         color: rgb(16, 236, 16);
         margin: 0px;
@@ -71,3 +113,7 @@
         margin-left: 5px;
     }
 </style>
+
+<script>
+
+</script>
