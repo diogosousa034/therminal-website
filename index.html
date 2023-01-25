@@ -19,11 +19,12 @@
     
         .mainDiv{
             background-color: black;
-            width: 50%;
-            height: 50vh;
+            width: 55%;
+            height: 55vh;
             position: relative;
             border-radius: 10px;
             padding: 40px;
+            padding-inline: 25px;
         }
     
         .mainTopDiv{
@@ -39,35 +40,35 @@
     
         .HeadText{
             text-align: center;
-            color: rgb(16, 236, 16);
+            color: rgba(39, 161, 23, 100);
         }
     
         .HeaderSimbols{
             position: absolute;
-            top: 15px;
+            top: 18px;
             left: 20px;
             display: flex;
         }
     
         .HeaderRed{
             background-color: red;
-            width: 15px;
-            height: 15px;
+            width: 10px;
+            height: 10px;
             border-radius: 25px;
         }
     
         .HeaderYellow{
             background-color: yellow;
-            width: 15px;
-            height: 15px;
+            width: 10px;
+            height: 10px;
             border-radius: 25px;
             margin-left: 10px;
         }
     
         .HeaderGreen{
             background-color: green;
-            width: 15px;
-            height: 15px;
+            width: 10px;
+            height: 10px;
             border-radius: 25px;
             margin-left: 10px;
         }
@@ -75,24 +76,40 @@
         .bodyTherminal{
             width: 100%; 
             height: 100%;
-            
         }
 
         .TherminalText{
-            color: rgb(16, 236, 16);
+            color: rgba(194, 138, 17, 0.70);
             margin: 0px;
-            padding-top: 1px;
+            padding-top: 2px;
+            font-family: cursor, monospace;
+            font-size: x-small;
+            margin-top: 5px;        
+        }
+
+        .TherminalTextCommand{
+            color: rgba(39, 161, 23, 0.70);
+            margin: 0px;
+            padding-top: 5px;
+            font-family: cursor, monospace;
+            font-size: x-small;
+        }
+
+        .telpText{
+            color: rgba(135, 206, 250, 0.90);
+            text-shadow:0 0 4px #73ABAD;
         }
         
         .code{
-            color: rgb(218, 197, 15)
+            color: rgba(194, 138, 17, 0.70);
         }
     
         .InputText{
             background-color: transparent;
-            color: rgb(16, 236, 16);
+            color: rgba(39, 161, 23, 0.70);
             border: none;
             outline: none;
+            font-size: x-small;
             height: 20px;
         }
 
@@ -100,35 +117,29 @@
             display: flex;
         }
 
-        .cursor {
-        font-size: 12px;
-        color: #73ABAD;
-        background-color: #73ABAD;
-        position: relative;
-        opacity: 1;
-        height: 1.5em;
-        width: 10px;
-        max-width: 10px;
-        transform: translateY(4px);
-        overflow: hidden;
-        text-indent: -5px;
-        display: inline-block;
-        text-decoration: blink;
-        animation: blinker 1s linear infinite;
-        }
-        @keyframes blinker {
-            50% {
-                opacity: 0;
-            }
-        }
-
         .sucess{
-            
+            color: rgba(39, 161, 23, 0.70);
+            margin: 0px;
+            padding-top: 3px;
+            font-family: cursor, monospace;
+            font-size: x-small;
         }
 
         .links{
             text-decoration: none;
-            color: yellow;
+            color: rgba(135, 206, 250, 0.90);
+            text-shadow:0 0 4px #73ABAD;
+        }
+
+        .emailLink{
+            text-decoration: none;
+            color: rgba(43, 177, 170, 0.8);
+        }
+
+        .HelpTopics{
+            text-decoration: none;
+            color: rgba(135, 206, 250, 0.90);
+            text-shadow:0 0 4px #73ABAD;
         }
 
         .scroll{
@@ -182,9 +193,9 @@ app.addEventListener("click", function(event)
 
 async function open_terminal(){
     await delay(500);
-    createText("Welcome to my terminal portfolio");
+    createText("Welcome to my web terminal");
     await delay(200);
-    createText("Type 'help' for the list of commands.");
+    createText("Type <span class='telpText'>'help'</span> for the list of commands.");
     await delay(500);
     new_line();
 }
@@ -197,8 +208,8 @@ function new_line(){
     const input = document.createElement("input");
     input.setAttribute("class", "InputText")
     const guestText = document.createElement("p");
-    guestText.setAttribute("class", "TherminalText");
-    guestText.textContent = "guest@s'Therminal.com:~ ";
+    guestText.setAttribute("class", "TherminalTextCommand");
+    guestText.textContent = "guest@S'Therminal.com:~ ";
     div.appendChild(guestText);
     div.appendChild(i);
     div.appendChild(input);
@@ -215,22 +226,37 @@ async function getInputValue(){
     const value = document.querySelector("input").value;
     if(value === "help"){
         trueValue(value);
-        createCode("help", "For help");
-        createCode("about", "To get details about me");
-        createCode("links", "To get links");
-        createCode("clear", "To clear the therminal");
+        createCode("<span class='HelpTopics'>help</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get the list of commands" + 
+        "<br/>" + 
+        "<span class='HelpTopics'>about</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get details about me" + 
+        "<br/>" + 
+        "<span class='HelpTopics'>social</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get my social media" + 
+        "<br/>" +
+        "<span class='HelpTopics'>email</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To send me an email" +
+        "<br/>" +
+        "<span class='HelpTopics'>clear</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To clear the therminal");
     }
     else if(value === "about"){
         trueValue(value);       
-        createCode("Hey, my name is Diogo Sousa !");
-        createCode("I was born at 2003, in Lisbon, Portugal.");
-        createCode("I started coding at about 14/15 years old and i have been coding ever since.");
-        createCode("In 2018 i went to a public school and startet getting coding classes there, <br/> after that i got a job at an It company called Xpand It.");
+        createCode("Hey, my name is Diogo Sousa !<br/>I was born at 2003, in Lisbon, Portugal." +
+        "<br/>" +
+        "I started coding at about 14/15 years old and i have been coding ever since." +
+        "<br/>" +
+        "In 2018 i went to a public school and startet getting coding classes there," +
+        "<br/>" +
+        "after that i got a job at an It company called Xpand It.");
     }
-    else if(value === "links"){
+    else if(value === "social"){
         trueValue(value);
-        createCode("<a href='https://github.com/diogosousa034'  class='links'>GitHub</a>");
-        createCode("<a href='https://www.instagram.com/de_sousaw/' class='links'>Instagram</a>");
+        createCode("<a href='https://github.com/diogosousa034' class='links'>GitHub</a>" +
+        "<br/>" +
+        "<a href='https://www.instagram.com/de_sousaw/' class='links'>Instagram</a>" +
+        "<br/>" +
+        "<a href='https://twitter.com/de_sousaw' class='links'>Twitter</a>");
+    }
+    else if(value === "email"){
+        trueValue(value);
+        createCode("You can click in the link below to send me and email:<br/><a href='mailto:diogosousampt03@gmail.com' class='emailLink'>diogosousampt03@gmail.com</a>");
     }
     else if(value === "clear"){
         document.querySelectorAll(".type2").forEach(e => e.parentNode.removeChild(e));
@@ -251,7 +277,7 @@ function trueValue(value){
     const mensagem = document.createElement("p");
     mensagem.setAttribute("class", "sucess")
     //mensagem.textContent = `${value}`;
-    const m = "guest@s'Therminal.com:~ ";
+    const m = "guest@S'Therminal.com:~ ";
     mensagem.textContent = m.concat(`${value}`);
     div.appendChild(i);
     div.appendChild(mensagem);
