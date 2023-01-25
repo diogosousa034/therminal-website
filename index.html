@@ -37,7 +37,14 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
-    
+
+        @media only screen and (max-width: 500px){
+            .mainDiv{
+                width: 80% !important;
+                height: 80vh !important;
+            }
+        }
+   
         .HeadText{
             text-align: center;
             color: rgba(39, 161, 23, 100);
@@ -111,6 +118,7 @@
             outline: none;
             font-size: medium;
             height: 20px;
+            width: 100%;
         }
 
         .type{
@@ -120,6 +128,7 @@
         .sucess{
             color: rgba(39, 161, 23, 0.70);
             margin: 0px;
+            width: 100%;
             padding-top: 3px;
             font-family: cursor, monospace;
             font-size: medium;
@@ -151,6 +160,10 @@
         ::-webkit-scrollbar{
             width: 0;
         }
+
+        .dflex{
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -168,6 +181,8 @@
         </div>
     </div>
     
+<!-- <div class='dflex'><span class='HelpTopics'>clear</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To clear the therminal</span></div>  -->
+
 </body>
 </html>
 
@@ -225,49 +240,49 @@ function removeInput(){
 
 async function getInputValue(){
     const value = document.querySelector("input").value;
-    if(value === "help"){
-        trueValue(value);
-        createCode("<span class='HelpTopics'>help</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get the list of commands" + 
-        "<br/>" + 
-        "<span class='HelpTopics'>about</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get details about me" + 
-        "<br/>" + 
-        "<span class='HelpTopics'>social</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get my social media" + 
-        "<br/>" +
-        "<span class='HelpTopics'>email</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To send me an email" +
-        "<br/>" +
-        "<span class='HelpTopics'>clear</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To clear the therminal");
-    }
-    else if(value === "about"){
-        trueValue(value);       
-        createCode("Hey, my name is Diogo Sousa !<br/>I was born at 2003, in Lisbon, Portugal." +
-        "<br/>" +
-        "I started coding at about 14/15 years old and i have been coding ever since." +
-        "<br/>" +
-        "In 2018 i went to a public school and startet getting coding classes there," +
-        "<br/>" +
-        "after that i got a job in an It company.");
-    }
-    else if(value === "social"){
-        trueValue(value);
-        createCode("<a href='https://github.com/diogosousa034' class='links'>GitHub</a>" +
-        "<br/>" +
-        "<a href='https://www.instagram.com/de_sousaw/' class='links'>Instagram</a>" +
-        "<br/>" +
-        "<a href='https://twitter.com/de_sousaw' class='links'>Twitter</a>");
-    }
-    else if(value === "email"){
-        trueValue(value);
-        createCode("You can click in the link below to send me and email:<br/><a href='mailto:diogosousampt03@gmail.com' class='emailLink'>diogosousampt03@gmail.com</a>");
-    }
-    else if(value === "clear"){
-        document.querySelectorAll(".type2").forEach(e => e.parentNode.removeChild(e));
-        document.querySelectorAll(".code").forEach(e => e.parentNode.removeChild(e));
-        document.querySelectorAll(".error").forEach(e => e.parentNode.removeChild(e));
-        document.querySelectorAll(".NotFound").forEach(e => e.parentNode.removeChild(e));
-    }
-    else{
-        falseValue(value);
-        createText(`<span class="NotFound">Command '${value}' not found. For a list of commands type <span class='telpText'>'help'</span>.</span>`);
+    switch(value){
+        case "help":
+            trueValue(value);
+            createCode("<div class='dflex'><span class='HelpTopics'>help</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To get the list of commands</span></div>" + 
+            "<div class='dflex'><span class='HelpTopics'>about</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To get details about me</span></div> " +
+            "<div class='dflex'><span class='HelpTopics'>social</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To get my social media</span></div>" +
+            "<div class='dflex'><span class='HelpTopics'>email</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To send me an email</span></div>" +
+            "<div class='dflex'><span class='HelpTopics'>clear</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To clear the therminal</span></div>");
+            break;
+        case "about":
+            trueValue(value);       
+            createCode("Hey, my name is Diogo Sousa!" +
+            "<br/>" +
+            "I was born at 2003, in Lisbon, Portugal." +
+            "<br/>" +
+            "I started coding at about 14/15 years old and i have been coding ever since." +
+            "<br/>" +
+            "In 2018 i went to a public school and startet getting coding classes there," +
+            "<br/>" +
+            "after that i got a job in an It company.");
+            break;
+        case "social":
+            trueValue(value);
+            createCode("<a href='https://github.com/diogosousa034' class='links'>GitHub</a>" +
+            "<br/>" +
+            "<a href='https://www.instagram.com/de_sousaw/' class='links'>Instagram</a>" +
+            "<br/>" +
+            "<a href='https://twitter.com/de_sousaw' class='links'>Twitter</a>");
+            break;
+        case "email":
+            trueValue(value);
+            createCode("You can click in the link below to send me and email:<br/><a href='mailto:diogosousampt03@gmail.com' class='emailLink'>diogosousampt03@gmail.com</a>");
+            break;
+        case "clear":
+            document.querySelectorAll(".type2").forEach(e => e.parentNode.removeChild(e));
+            document.querySelectorAll(".code").forEach(e => e.parentNode.removeChild(e));
+            document.querySelectorAll(".error").forEach(e => e.parentNode.removeChild(e));
+            document.querySelectorAll(".NotFound").forEach(e => e.parentNode.removeChild(e));
+            break;
+        default:
+            falseValue(value);
+            createText(`<span class="NotFound">Command '${value}' not found. For a list of commands type <span class='telpText'>'help'</span>.</span>`);
+            break;
     }
 }
 
