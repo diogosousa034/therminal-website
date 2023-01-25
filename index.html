@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'Folio</title>
+    <title>S'Therminal</title>
     <style>
         body{
             background-color: #171717;
@@ -72,16 +72,18 @@
             margin-left: 10px;
         }
     
+        .bodyTherminal{
+            width: 100%; 
+            height: 100%;
+            
+        }
+
         .TherminalText{
             color: rgb(16, 236, 16);
             margin: 0px;
             padding-top: 1px;
         }
         
-        .sucess{
-            
-        }
-
         .code{
             color: rgb(218, 197, 15); 
         }
@@ -111,9 +113,20 @@
         animation: blinker 1s linear infinite;
         }
         @keyframes blinker {
-        50% {
-            opacity: 0;
+            50% {
+                opacity: 0;
+            }
         }
+
+
+        .scroll{
+            max-height: 100%;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        ::-webkit-scrollbar{
+            width: 0;
         }
 
     </style>
@@ -126,10 +139,12 @@
                 <div class="HeaderYellow"></div>
                 <div class="HeaderGreen"></div>
             </div>
-            <p class="HeadText">S'Folio</p>
+            <p class="HeadText">S'Therminal</p>
         </div>
         
-        <div id="app" class="TherminalText" style="width: 50%; height: 50vh;"></div>
+        <div class="scroll">
+            <div id="app" class="TherminalText" class="bodyTherminal"></div>
+        </div>
     </div>
 </body>
 </html>
@@ -157,7 +172,7 @@ app.addEventListener("click", function(event)
 
 async function open_terminal(){
     await delay(500);
-    createText("Welcome to Terminal", "");
+    createText("Welcome to my terminal portfolio", "");
     await delay(200);
     createText("Type /help for the list of commands");
     await delay(500);
