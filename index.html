@@ -167,6 +167,7 @@
             <div id="app" class="TherminalText" class="bodyTherminal"></div>
         </div>
     </div>
+    
 </body>
 </html>
 
@@ -226,7 +227,7 @@ async function getInputValue(){
     const value = document.querySelector("input").value;
     if(value === "help"){
         trueValue(value);
-        createCode("<span class='HelpTopics'>help</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get the list of commands" + 
+        createCode("<span class='HelpTopics'>help</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get the list of commands" + 
         "<br/>" + 
         "<span class='HelpTopics'>about</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To get details about me" + 
         "<br/>" + 
@@ -261,11 +262,12 @@ async function getInputValue(){
     else if(value === "clear"){
         document.querySelectorAll(".type2").forEach(e => e.parentNode.removeChild(e));
         document.querySelectorAll(".code").forEach(e => e.parentNode.removeChild(e));
-        //document.querySelectorAll("section").forEach(e => e.parentNode.removeChild(e));
+        document.querySelectorAll(".error").forEach(e => e.parentNode.removeChild(e));
+        document.querySelectorAll(".NotFound").forEach(e => e.parentNode.removeChild(e));
     }
     else{
         falseValue(value);
-        createText(`command not found: ${value}`);
+        createText(`<span class="NotFound">Command '${value}' not found. For a list of commands type <span class='telpText'>'help'</span>.</span>`);
     }
 }
 
@@ -276,7 +278,6 @@ function trueValue(value){
     i.setAttribute("class", "fas fa-angle-right icone")
     const mensagem = document.createElement("p");
     mensagem.setAttribute("class", "sucess")
-    //mensagem.textContent = `${value}`;
     const m = "guest@S'Therminal.com:~ ";
     mensagem.textContent = m.concat(`${value}`);
     div.appendChild(i);
@@ -286,12 +287,13 @@ function trueValue(value){
 
 function falseValue(value){
     const div = document.createElement("section");
-    //div.setAttribute("class", "type2")
+    div.setAttribute("class", "type2")
     const i = document.createElement("i");
     i.setAttribute("class", "fas fa-angle-right icone")
     const mensagem = document.createElement("p");
-    mensagem.setAttribute("class", "error")
-    mensagem.textContent = `${value}`;
+    mensagem.setAttribute("class", "sucess")
+    const m = "guest@S'Therminal.com:~ ";
+    mensagem.textContent = m.concat(`${value}`);
     div.appendChild(i);
     div.appendChild(mensagem);
     app.appendChild(div);
