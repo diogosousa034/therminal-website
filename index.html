@@ -111,16 +111,6 @@
             color: rgba(194, 138, 17, 0.70);
         }
     
-        .InputText{
-            background-color: transparent;
-            color: rgba(39, 161, 23, 0.70);
-            border: none;
-            outline: none;
-            font-size: medium;
-            height: 20px;
-            width: 100%;
-        }
-
         .type{
             display: flex;
         }
@@ -164,6 +154,43 @@
         .dflex{
             display: flex;
         }
+
+        .input,
+        .textarea {
+            background-color: transparent;
+            color: rgba(39, 161, 23, 0.70);
+            border: none;
+            outline: none;
+            font-size: medium;
+            padding: 1px 0px;
+            min-width: 4px;
+            margin-left: 8px;
+            caret-color: transparent;
+        }
+
+        .cursor {
+            font-size: 12px;
+            color: #73ABAD;
+            background-color: #73ABAD;
+            position: relative;
+            opacity: 1;
+            height: 22px;
+            width: 10px;
+            max-width: 10px;
+            margin: 0;
+            overflow: hidden;
+            text-indent: -5px;
+            display: inline-block;
+            text-decoration: blink;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -177,17 +204,13 @@
             <p class="HeadText">S'Therminal</p>
         </div>
         <div class="scroll">
-            <div id="app" class="TherminalText" class="bodyTherminal"></div>
-        </div>
+            <div id="app" class="TherminalText" class="bodyTherminal"></div>                            
+        </div>        
     </div>
-    
-<!-- <div class='dflex'><span class='HelpTopics'>clear</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>To clear the therminal</span></div>  -->
-
 </body>
 </html>
 
 <script>
-
 const app = document.querySelector("#app");
 const delay = ms => new Promise(res=>setTimeout(res, ms));
 
@@ -201,10 +224,11 @@ app.addEventListener("keypress", async function(event){
     }
 });
 
-app.addEventListener("click", function(event)
+const InputFocus = document.querySelector(".mainDiv")
+InputFocus.addEventListener("click", function(event)
 {
-    const input = document.querySelector(".InputText");
-    input.focus;
+    const input = document.getElementById("InputMain");
+    input.focus();
 })
 
 async function open_terminal(){
@@ -219,16 +243,28 @@ async function open_terminal(){
 function new_line(){
     const div = document.createElement("div");
     div.setAttribute("class", "type")
+    div.setAttribute("id", "type")
     const i = document.createElement("i");
     i.setAttribute("class", "fas fa-angle-right- icone")  
-    const input = document.createElement("input");
-    input.setAttribute("class", "InputText")
+
+    const input = document.createElement("span");
+    input.setAttribute("class", "input")
+    input.setAttribute("id", "InputMain")
+    input.setAttribute("role", "textbox")
+    input.contentEditable = true;
+
     const guestText = document.createElement("p");
     guestText.setAttribute("class", "TherminalTextCommand");
     guestText.textContent = "guest@S'Therminal.com:~ ";
+
+    const customCaret = document.createElement("p");
+    customCaret.setAttribute("class", "cursor");
+    customCaret.setAttribute("id", "cursor");
+
     div.appendChild(guestText);
     div.appendChild(i);
     div.appendChild(input);
+    div.appendChild(customCaret);
     app.appendChild(div);
     input.focus();
 }
@@ -239,7 +275,7 @@ function removeInput(){
 }
 
 async function getInputValue(){
-    const value = document.querySelector("input").value;
+    const value = document.getElementById("InputMain").textContent;
     switch(value){
         case "help":
             trueValue(value);
